@@ -1,0 +1,19 @@
+{
+  "1207516710": {
+    "username": "katshuuu",
+    "first_name": "е.катерина",
+    "registration_date": "2025-09-06T09:22:54.300477",
+    "tests_completed": 1,
+    "test_history": [
+      {
+        "test_name": "lusher",
+        "date": "2025-09-06T09:23:08.587656",
+        "result": {
+          "energy": 68,
+          "calmness": 55,
+          "creativity": 64
+        }
+      }
+    ]
+  }
+}
