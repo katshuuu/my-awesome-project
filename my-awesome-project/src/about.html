@@ -6,45 +6,171 @@
     <title>О нас - Название вашего сайта</title>
     <meta name="description" content="Узнайте больше о нашей компании и истории">
     <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- Open Graph микроразметка -->
     <meta property="og:type" content="website">
     <meta property="og:title" content="О нас - Название вашего сайта">
     <meta property="og:description" content="Узнайте больше о нашей компании и истории">
-    <meta property="og:image" content="https://.../link-to-image.jpg">
+    <meta property="og:image" content="https://ваш-логин.github.io/имя-репозитория/assets/og-about.jpg">
+    <meta property="og:url" content="https://ваш-логин.github.io/имя-репозитория/about.html">
+    <meta property="og:site_name" content="Название вашего сайта">
 </head>
 <body>
-    <header>
-        <a href="/">Логотип или название сайта</a>
-        <nav>
-            <ul>
-                <li><a href="index.html">Главная</a></li>
-                <li><a href="about.html">О нас</a></li>
-                <li><a href="contacts.html">Контакты</a></li>
-            </ul>
-        </nav>
+    <!-- Header -->
+    <header class="site-header">
+        <div class="container site-header__inner">
+            <a href="index.html" class="site-header__brand">Логотип сайта</a>
+            
+            <nav class="site-nav" aria-label="Основная навигация">
+                <ul class="site-nav__list">
+                    <li class="site-nav__item">
+                        <a href="index.html" class="site-nav__link">Главная</a>
+                    </li>
+                    <li class="site-nav__item">
+                        <a href="about.html" class="site-nav__link site-nav__link--active">О нас</a>
+                    </li>
+                    <li class="site-nav__item">
+                        <a href="contacts.html" class="site-nav__link">Контакты</a>
+                    </li>
+                    <li class="site-nav__item">
+                        <a href="#contacts" class="site-nav__link site-nav__link--cta">Связаться</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
     </header>
 
-    <main>
-        <!-- Простые "хлебные крошки" -->
-        <nav aria-label="Хлебные крошки">
-            <a href="index.html">Главная</a> -
-            <span>О нас</span>
+    <main class="container">
+        <!-- Хлебные крошки -->
+        <nav class="breadcrumbs" aria-label="Хлебные крошки">
+            <ul class="breadcrumbs__list">
+                <li class="breadcrumbs__item">
+                    <a href="index.html" class="breadcrumbs__link">Главная</a>
+                </li>
+                <li class="breadcrumbs__item">
+                    <span class="breadcrumbs__current">О нас</span>
+                </li>
+            </ul>
         </nav>
 
-        <h1>О нашей компании</h1>
-        <section>
-            <h2>Наша история</h2>
-            <p>Текст о том, как все начиналось...</p>
+        <!-- Hero Section -->
+        <section class="hero">
+            <h1 class="hero__title">О нашей компании</h1>
+            <p class="hero__description">Узнайте больше о нашей миссии, ценностях и команде профессионалов</p>
         </section>
-        <section>
-            <h2>Наша команда</h2>
-            <p>Текст о команде...</p>
+
+        <!-- History Section -->
+        <section class="section" id="history">
+            <h2 class="section__title">Наша история</h2>
+            
+            <div class="grid" style="--cols: 1; --gap: var(--space-4); display: grid; grid-template-columns: repeat(var(--cols, 1), 1fr); gap: var(--gap);">
+                <div class="card">
+                    <picture>
+                        <source type="image/webp" srcset="assets/about/history-640.webp 640w, assets/about/history-960.webp 960w">
+                        <source type="image/jpeg" srcset="assets/about/history-640.jpg 640w, assets/about/history-960.jpg 960w">
+                        <img 
+                            src="assets/about/history-640.jpg" 
+                            alt="История нашей компании" 
+                            class="card__image responsive-image"
+                            width="640" 
+                            height="360"
+                            loading="lazy"
+                        >
+                    </picture>
+                    <div class="card__content">
+                        <h3 class="card__title">С чего все начиналось</h3>
+                        <p class="card__description">Основанная в 2020 году, наша компания начинала с небольших проектов и постепенно выросла в полноценную студию веб-разработки.</p>
+                        <p>Мы верим в силу технологий и их способность изменять мир к лучшему. Наша миссия - создавать цифровые продукты, которые решают реальные проблемы пользователей.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Team Section -->
+        <section class="section" id="team">
+            <h2 class="section__title">Наша команда</h2>
+            
+            <div class="grid" style="--cols: 1; --gap: var(--space-4); display: grid; grid-template-columns: repeat(var(--cols, 1), 1fr); gap: var(--gap);">
+                <article class="card">
+                    <img 
+                        src="assets/placeholder-400.jpg" 
+                        data-src="assets/team/developer-400.jpg"
+                        alt="Ведущий разработчик" 
+                        class="card__image"
+                        width="400" 
+                        height="400"
+                        loading="lazy"
+                        style="object-fit: cover;"
+                    >
+                    <div class="card__content">
+                        <h3 class="card__title">Алексей Петров</h3>
+                        <p class="card__description">Ведущий разработчик</p>
+                        <p>Опыт работы: 8+ лет. Специализируется на React, Node.js и современных веб-технологиях.</p>
+                    </div>
+                </article>
+
+                <article class="card">
+                    <img 
+                        src="assets/placeholder-400.jpg" 
+                        data-src="assets/team/designer-400.jpg"
+                        alt="UX/UI дизайнер" 
+                        class="card__image"
+                        width="400" 
+                        height="400"
+                        loading="lazy"
+                        style="object-fit: cover;"
+                    >
+                    <div class="card__content">
+                        <h3 class="card__title">Мария Иванова</h3>
+                        <p class="card__description">UX/UI дизайнер</p>
+                        <p>Создает интуитивные и эстетичные интерфейсы с фокусом на пользовательский опыт.</p>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- Video Section -->
+        <section class="section">
+            <h2 class="section__title">Наше рабочее пространство</h2>
+            
+            <div class="media-container">
+                <iframe 
+                    class="media-container__iframe"
+                    src="https://www.youtube.com/embed/dQw4w9WgXcQ" 
+                    title="Экскурсия по нашему офису"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen
+                    loading="lazy"
+                ></iframe>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="section" id="contacts">
+            <h2 class="section__title">Готовы начать проект?</h2>
+            <p class="text-center mb-4">Свяжитесь с нами для обсуждения ваших идей и потребностей</p>
+            <div class="text-center">
+                <button class="btn btn--primary" data-modal="contactModal">Обсудить проект</button>
+            </div>
         </section>
     </main>
 
-    <footer>
-        <p>&copy; 2023 Название вашего сайта. Все права защищены.</p>
-        <p>Телефон: +7 (123) 456-78-90</p>
-        <button id="openDialog" type="button" class="btn-primary">Написать нам</button>
+    <!-- Modal (аналогично index.html) -->
+    <dialog id="contactModal" class="modal" aria-labelledby="modalTitle">
+        <!-- Содержимое модального окна такое же как в index.html -->
+    </dialog>
+
+    <!-- Footer (аналогично index.html) -->
+    <footer class="site-footer">
+        <!-- Содержимое футера такое же как в index.html -->
     </footer>
+
+    <!-- Theme Toggle Button -->
+    <button class="theme-toggle" type="button" aria-pressed="false" aria-label="Переключить тему">
+        <span class="theme-toggle__icon">🌙</span>
+    </button>
+
+    <script src="main.js"></script>
 </body>
 </html>

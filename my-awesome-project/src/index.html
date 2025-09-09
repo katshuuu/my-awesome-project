@@ -3,96 +3,272 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Практика 3 - Формы и модальные окна</title>
-    <meta name="description" content="Форма обратной связи с валидацией в модальном окне">
+    <title>Главная - Название вашего сайта</title>
+    <meta name="description" content="Краткое описание главной страницы вашего сайта">
+    <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="styles.css">
+    
+    <!-- Open Graph микроразметка -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Главная - Название вашего сайта">
+    <meta property="og:description" content="Краткое описание главной страницы вашего сайта">
+    <meta property="og:image" content="https://ваш-логин.github.io/имя-репозитория/assets/og-image.jpg">
+    <meta property="og:url" content="https://ваш-логин.github.io/имя-репозитория/">
+    <meta property="og:site_name" content="Название вашего сайта">
 </head>
 <body>
-    <header>
-        <a href="/">Логотип сайта</a>
-        <nav>
-            <ul>
-                <li><a href="index.html">Главная</a></li>
-                <li><a href="about.html">О нас</a></li>
-                <li><a href="contacts.html">Контакты</a></li>
-            </ul>
-        </nav>
+    <!-- Header -->
+    <header class="site-header">
+        <div class="container site-header__inner">
+            <a href="index.html" class="site-header__brand">Логотип сайта</a>
+            
+            <nav class="site-nav" aria-label="Основная навигация">
+                <ul class="site-nav__list">
+                    <li class="site-nav__item">
+                        <a href="index.html" class="site-nav__link site-nav__link--active">Главная</a>
+                    </li>
+                    <li class="site-nav__item">
+                        <a href="about.html" class="site-nav__link">О нас</a>
+                    </li>
+                    <li class="site-nav__item">
+                        <a href="contacts.html" class="site-nav__link">Контакты</a>
+                    </li>
+                    <li class="site-nav__item">
+                        <a href="#contacts" class="site-nav__link site-nav__link--cta">Связаться</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
     </header>
 
-    <main>
-        <h1>Добро пожаловать на наш сайт!</h1>
-        
-        <section>
-            <h2>Наши услуги</h2>
-            <p>Описание предоставляемых услуг...</p>
-            
-            <!-- Кнопка открытия модалки -->
-            <button id="openDialog" type="button" class="btn-primary">Написать нам</button>
+    <main class="container">
+        <!-- Хлебные крошки -->
+        <nav class="breadcrumbs" aria-label="Хлебные крошки">
+            <ul class="breadcrumbs__list">
+                <li class="breadcrumbs__item">
+                    <span class="breadcrumbs__current">Главная</span>
+                </li>
+            </ul>
+        </nav>
+
+        <!-- Hero Section -->
+        <section class="hero">
+            <h1 class="hero__title">Добро пожаловать на мой сайт!</h1>
+            <p class="hero__description">В МИРЭА создаем современные digital-решения для вашего бизнеса</p>
+            <button class="btn btn--primary" data-modal="contactModal">Начать работу</button>
         </section>
 
-        <!-- Модальное окно с формой -->
-        <dialog id="contactDialog" aria-labelledby="dialogTitle">
-            <div class="dialog-content">
-                <h2 id="dialogTitle">Обратная связь</h2>
-                
-                <form id="contactForm" method="dialog" novalidate>
-                    <div class="form-group">
-                        <label for="name">Имя *</label>
-                        <input id="name" name="name" type="text" required minlength="2" 
-                               autocomplete="given-name" aria-required="true">
+        <!-- Services Section -->
+        <section class="section" id="services">
+            <h2 class="section__title">Наши услуги</h2>
+            
+            <div class="grid" style="--cols: 1; --gap: var(--space-4); display: grid; grid-template-columns: repeat(var(--cols, 1), 1fr); gap: var(--gap);">
+                <article class="card">
+                    <img 
+                        src="assets/placeholder-640.jpg" 
+                        data-src="assets/services/web-dev-640.jpg" 
+                        data-srcset="assets/services/web-dev-640.jpg 640w, assets/services/web-dev-960.jpg 960w, assets/services/web-dev-1280.jpg 1280w"
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                        alt="Веб-разработка" 
+                        class="card__image responsive-image"
+                        width="640" 
+                        height="360"
+                        loading="lazy"
+                    >
+                    <div class="card__content">
+                        <h3 class="card__title">Веб-разработка</h3>
+                        <p class="card__description">Создаем современные и responsive веб-сайты с использованием передовых технологий.</p>
+                        <a href="#contacts" class="btn btn--primary">Узнать больше</a>
                     </div>
+                </article>
 
-                    <div class="form-group">
-                        <label for="email">E-mail *</label>
-                        <input id="email" name="email" type="email" required 
-                               autocomplete="email" aria-required="true">
+                <article class="card">
+                    <img 
+                        src="assets/placeholder-640.jpg" 
+                        data-src="assets/services/design-640.jpg"
+                        alt="Дизайн интерфейсов" 
+                        class="card__image responsive-image"
+                        width="640" 
+                        height="360"
+                        loading="lazy"
+                    >
+                    <div class="card__content">
+                        <h3 class="card__title">Фронтенд разработка</h3>
+                        <p class="card__description">Проектируем интуитивно понятные и эстетичные пользовательские интерфейсы.</p>
+                        <a href="#contacts" class="btn btn--primary">Узнать больше</a>
                     </div>
-
-                    <div class="form-group">
-                        <label for="phone">Телефон *</label>
-                        <input id="phone" name="phone" type="tel" inputmode="tel" 
-                               autocomplete="tel" aria-describedby="phoneHelp" 
-                               placeholder="+7 (900) 000-00-00" required 
-                               pattern="^\+7 \(\d{3}\) \d{3}-\d{2}-\d{2}$"
-                               aria-required="true">
-                        <small id="phoneHelp" class="help-text">Формат: +7 (900) 000-00-00</small>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="date">Дата обращения</label>
-                        <input id="date" name="date" type="date">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="topic">Тема обращения *</label>
-                        <select id="topic" name="topic" required aria-required="true">
-                            <option value="">Выберите тему</option>
-                            <option value="question">Вопрос</option>
-                            <option value="order">Заказ</option>
-                            <option value="complaint">Жалоба</option>
-                            <option value="other">Другое</option>
-                        </select>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="message">Сообщение *</label>
-                        <textarea id="message" name="message" rows="4" required 
-                                  aria-required="true" placeholder="Опишите ваш вопрос..."></textarea>
-                    </div>
-
-                    <div class="form-actions">
-                        <button type="button" id="closeDialog" class="btn-secondary">Закрыть</button>
-                        <button type="submit" class="btn-primary">Отправить</button>
-                    </div>
-                </form>
+                </article>
             </div>
-        </dialog>
+        </section>
+
+        <!-- Video Section - ДОБАВЛЕНО ВИДЕО -->
+        <section class="section">
+            <h2 class="section__title">Смотрите наше видео</h2>
+            <p class="text-center mb-4">Узнайте больше о нашей работе из этого видео</p>
+            
+            <div class="media-container">
+                <iframe 
+                    class="media-container__iframe"
+                    src="https://rutube.ru/play/embed/5d1fd592d7661b87126c1f2a23dae2d1" 
+                    title="Видео о нашей компании и услугах"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowfullscreen
+                    loading="lazy"
+                ></iframe>
+            </div>
+            
+            <div class="text-center mt-4">
+                <p class="mb-2">Больше видео на нашем <a href="https://rutube.ru" target="_blank" class="text-gradient">Rutube канале</a></p>
+                <button class="btn btn--accent" data-modal="contactModal">Заказать похожее видео</button>
+            </div>
+        </section>
+
+        <!-- Contacts Section -->
+        <section class="section" id="contacts">
+            <h2 class="section__title">Контактная информация</h2>
+            
+            <div class="grid" style="--cols: 1; --gap: var(--space-4); display: grid; grid-template-columns: repeat(var(--cols, 1), 1fr); gap: var(--gap);">
+                <div class="card">
+                    <div class="card__content">
+                        <h3 class="card__title">Наши контакты</h3>
+                        <p>Адрес: г. Москва, пр. Вернадского, д. 78</p>
+                        <p>Телефон: +7 (123) 456-78-90</p>
+                        <p>Email: info@example.com</p>
+                        
+                        <div class="form__actions">
+                            <button class="btn btn--primary" data-modal="contactModal">Написать нам</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
     </main>
 
-    <footer>
-        <p>&copy; 2024 Название вашего сайта. Все права защищены.</p>
+    <!-- Modal -->
+    <dialog id="contactModal" class="modal" aria-labelledby="modalTitle">
+        <div class="modal__header">
+            <h2 id="modalTitle" class="modal__title">Обратная связь</h2>
+            <button class="modal__close" data-close-modal aria-label="Закрыть">×</button>
+        </div>
+        
+        <div class="modal__body">
+            <form class="form" id="contactForm" data-validate novalidate>
+                <div class="form__group">
+                    <label for="name" class="form__label">Имя *</label>
+                    <input 
+                        type="text" 
+                        id="name" 
+                        name="name" 
+                        class="form__input" 
+                        required 
+                        minlength="2"
+                        autocomplete="given-name"
+                        data-validate
+                    >
+                    <div class="form__error" id="nameError"></div>
+                </div>
+
+                <div class="form__group">
+                    <label for="email" class="form__label">E-mail *</label>
+                    <input 
+                        type="email" 
+                        id="email" 
+                        name="email" 
+                        class="form__input" 
+                        required
+                        autocomplete="email"
+                        data-validate
+                    >
+                    <div class="form__error" id="emailError"></div>
+                </div>
+
+                <div class="form__group">
+                    <label for="phone" class="form__label">Телефон *</label>
+                    <input 
+                        type="tel" 
+                        id="phone" 
+                        name="phone" 
+                        class="form__input" 
+                        required
+                        autocomplete="tel"
+                        pattern="^\+7 \(\d{3}\) \d{3}-\d{2}-\d{2}$"
+                        data-validate
+                    >
+                    <div class="form__error" id="phoneError"></div>
+                </div>
+
+                <div class="form__group">
+                    <label for="topic" class="form__label">Тема обращения *</label>
+                    <select id="topic" name="topic" class="form__select" required data-validate>
+                        <option value="">Выберите тему</option>
+                        <option value="consultation">Консультация</option>
+                        <option value="project">Проект</option>
+                        <option value="support">Техническая поддержка</option>
+                        <option value="other">Другое</option>
+                    </select>
+                    <div class="form__error" id="topicError"></div>
+                </div>
+
+                <div class="form__group">
+                    <label for="message" class="form__label">Сообщение *</label>
+                    <textarea 
+                        id="message" 
+                        name="message" 
+                        class="form__textarea" 
+                        rows="4" 
+                        required
+                        data-validate
+                        placeholder="Опишите ваш вопрос или проект..."
+                    ></textarea>
+                    <div class="form__error" id="messageError"></div>
+                </div>
+
+                <div class="modal__footer">
+                    <button type="button" class="btn btn--secondary" data-close-modal>Закрыть</button>
+                    <button type="submit" class="btn btn--primary">Отправить сообщение</button>
+                </div>
+            </form>
+        </div>
+    </dialog>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container site-footer__inner">
+            <div class="site-footer__section">
+                <h3 class="site-footer__title">О компании</h3>
+                <p>Мы делаем практические работы с 1703 года. Наша команда супер-профессионалов готова реализовать ваш проект.</p>
+            </div>
+
+            <div class="site-footer__section">
+                <h3 class="site-footer__title">Навигация</h3>
+                <ul class="site-footer__links">
+                    <li><a href="index.html" class="site-footer__link">Главная</a></li>
+                    <li><a href="about.html" class="site-footer__link">О нас</a></li>
+                    <li><a href="contacts.html" class="site-footer__link">Контакты</a></li>
+                    <li><a href="#services" class="site-footer__link">Услуги</a></li>
+                </ul>
+            </div>
+
+            <div class="site-footer__section">
+                <h3 class="site-footer__title">Контакты</h3>
+                <ul class="site-footer__links">
+                    <li>Email: info@example.com</li>
+                    <li>Телефон: +7 (123) 456-78-90</li>
+                    <li>Адрес: г. Москва, пр. Вернадского, д. 78</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="container site-footer__bottom">
+            <p>&copy; 2025 Название вашего сайта. Все права защищены.</p>
+        </div>
     </footer>
 
-    <script src="main.js" defer></script>
+    <!-- Theme Toggle Button -->
+    <button class="theme-toggle" type="button" aria-pressed="false" aria-label="Переключить тему">
+        <span class="theme-toggle__icon">🌙</span>
+    </button>
+
+    <script src="main.js"></script>
 </body>
 </html>

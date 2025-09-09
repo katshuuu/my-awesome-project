@@ -6,47 +6,223 @@
     <title>Контакты - Название вашего сайта</title>
     <meta name="description" content="Контактная информация и как с нами связаться">
     <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- Open Graph микроразметка -->
     <meta property="og:type" content="website">
     <meta property="og:title" content="Контакты - Название вашего сайта">
     <meta property="og:description" content="Контактная информация и как с нами связаться">
-    <meta property="og:image" content="https://.../link-to-image.jpg">
+    <meta property="og:image" content="https://ваш-логин.github.io/имя-репозитория/assets/og-contacts.jpg">
+    <meta property="og:url" content="https://ваш-логин.github.io/имя-репозитория/contacts.html">
+    <meta property="og:site_name" content="Название вашего сайта">
 </head>
 <body>
-    <header>
-        <a href="/">Логотип или название сайта</a>
-        <nav>
-            <ul>
-                <li><a href="index.html">Главная</a></li>
-                <li><a href="about.html">О нас</a></li>
-                <li><a href="contacts.html">Контакты</a></li>
-            </ul>
-        </nav>
+    <!-- Header -->
+    <header class="site-header">
+        <div class="container site-header__inner">
+            <a href="index.html" class="site-header__brand">Логотип сайта</a>
+            
+            <nav class="site-nav" aria-label="Основная навигация">
+                <ul class="site-nav__list">
+                    <li class="site-nav__item">
+                        <a href="index.html" class="site-nav__link">Главная</a>
+                    </li>
+                    <li class="site-nav__item">
+                        <a href="about.html" class="site-nav__link">О нас</a>
+                    </li>
+                    <li class="site-nav__item">
+                        <a href="contacts.html" class="site-nav__link site-nav__link--active">Контакты</a>
+                    </li>
+                    <li class="site-nav__item">
+                        <a href="#contact-form" class="site-nav__link site-nav__link--cta">Написать нам</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
     </header>
 
-    <main>
-        <!-- Простые "хлебные крошки" -->
-        <nav aria-label="Хлебные крошки">
-            <a href="index.html">Главная</a> -
-            <span>Контакты</span>
+    <main class="container">
+        <!-- Хлебные крошки -->
+        <nav class="breadcrumbs" aria-label="Хлебные крошки">
+            <ul class="breadcrumbs__list">
+                <li class="breadcrumbs__item">
+                    <a href="index.html" class="breadcrumbs__link">Главная</a>
+                </li>
+                <li class="breadcrumbs__item">
+                    <span class="breadcrumbs__current">Контакты</span>
+                </li>
+            </ul>
         </nav>
 
-        <h1>Наши контакты</h1>
-        <section>
-            <h2>Контактная информация</h2>
-            <p>Адрес: г. Москва, ул. Примерная, д. 123</p>
-            <p>Телефон: +7 (123) 456-78-90</p>
-            <p>Email: info@example.com</p>
+        <!-- Hero Section -->
+        <section class="hero">
+            <h1 class="hero__title">Наши контакты</h1>
+            <p class="hero__description">Свяжитесь с нами удобным для вас способом</p>
         </section>
-        <section>
-            <h2>Форма обратной связи</h2>
-            <p>Здесь будет форма для связи...</p>
-            <button id="openDialog" type="button" class="btn-primary">Написать нам</button>
+
+        <!-- Contact Information -->
+        <section class="section">
+            <h2 class="section__title">Контактная информация</h2>
+            
+            <div class="grid" style="--cols: 1; --gap: var(--space-4); display: grid; grid-template-columns: repeat(var(--cols, 1), 1fr); gap: var(--gap);">
+                <div class="card">
+                    <div class="card__content">
+                        <h3 class="card__title">Основные контакты</h3>
+                        
+                        <div class="contact-info">
+                            <div class="contact-info__item">
+                                <strong>Адрес:</strong>
+                                <p>г. Москва, ул. Примерная, д. 123</p>
+                            </div>
+                            
+                            <div class="contact-info__item">
+                                <strong>Телефон:</strong>
+                                <p>+7 (123) 456-78-90</p>
+                            </div>
+                            
+                            <div class="contact-info__item">
+                                <strong>Email:</strong>
+                                <p>info@example.com</p>
+                            </div>
+                            
+                            <div class="contact-info__item">
+                                <strong>Режим работы:</strong>
+                                <p>Пн-Пт: 9:00-18:00</p>
+                                <p>Сб-Вс: выходные</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card__content">
+                        <h3 class="card__title">Как добраться</h3>
+                        <p>Мы находимся в центре города, рядом со станцией метро "Примерная".</p>
+                        
+                        <!-- Карта -->
+                        <div class="media-container" style="aspect-ratio: 4/3;">
+                            <iframe 
+                                class="media-container__iframe"
+                                src="https://yandex.ru/map-widget/v1/?um=constructor%3A1234567890abcdef&amp;source=constructor"
+                                title="Карта расположения нашего офиса"
+                                loading="lazy"
+                            ></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Form Section -->
+        <section class="section" id="contact-form">
+            <h2 class="section__title">Форма обратной связи</h2>
+            
+            <div class="card">
+                <div class="card__content">
+                    <form class="form" id="contactPageForm" data-validate novalidate>
+                        <div class="form__group">
+                            <label for="contact-name" class="form__label">Имя *</label>
+                            <input 
+                                type="text" 
+                                id="contact-name" 
+                                name="name" 
+                                class="form__input" 
+                                required 
+                                minlength="2"
+                                autocomplete="given-name"
+                                data-validate
+                            >
+                            <div class="form__error" id="contactNameError"></div>
+                        </div>
+
+                        <div class="form__group">
+                            <label for="contact-email" class="form__label">E-mail *</label>
+                            <input 
+                                type="email" 
+                                id="contact-email" 
+                                name="email" 
+                                class="form__input" 
+                                required
+                                autocomplete="email"
+                                data-validate
+                            >
+                            <div class="form__error" id="contactEmailError"></div>
+                        </div>
+
+                        <div class="form__group">
+                            <label for="contact-phone" class="form__label">Телефон</label>
+                            <input 
+                                type="tel" 
+                                id="contact-phone" 
+                                name="phone" 
+                                class="form__input"
+                                autocomplete="tel"
+                                pattern="^\+7 \(\d{3}\) \d{3}-\d{2}-\d{2}$"
+                                data-validate
+                            >
+                            <div class="form__error" id="contactPhoneError"></div>
+                        </div>
+
+                        <div class="form__group">
+                            <label for="contact-topic" class="form__label">Тема обращения *</label>
+                            <select id="contact-topic" name="topic" class="form__select" required data-validate>
+                                <option value="">Выберите тему</option>
+                                <option value="consultation">Консультация</option>
+                                <option value="project">Проект</option>
+                                <option value="support">Техническая поддержка</option>
+                                <option value="partnership">Партнерство</option>
+                                <option value="other">Другое</option>
+                            </select>
+                            <div class="form__error" id="contactTopicError"></div>
+                        </div>
+
+                        <div class="form__group">
+                            <label for="contact-message" class="form__label">Сообщение *</label>
+                            <textarea 
+                                id="contact-message" 
+                                name="message" 
+                                class="form__textarea" 
+                                rows="5" 
+                                required
+                                data-validate
+                                placeholder="Опишите ваш вопрос или проект..."
+                            ></textarea>
+                            <div class="form__error" id="contactMessageError"></div>
+                        </div>
+
+                        <div class="form__actions">
+                            <button type="submit" class="btn btn--primary">Отправить сообщение</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- Social Links -->
+        <section class="section">
+            <h2 class="section__title">Мы в социальных сетях</h2>
+            
+            <div class="text-center">
+                <div class="social-links" style="display: flex; gap: var(--space-3); justify-content: center; flex-wrap: wrap;">
+                    <a href="#" class="btn btn--secondary" aria-label="ВКонтакте">VK</a>
+                    <a href="#" class="btn btn--secondary" aria-label="Telegram">TG</a>
+                    <a href="#" class="btn btn--secondary" aria-label="YouTube">YT</a>
+                    <a href="#" class="btn btn--secondary" aria-label="GitHub">GH</a>
+                </div>
+            </div>
         </section>
     </main>
 
-    <footer>
-        <p>&copy; 2023 Название вашего сайта. Все права защищены.</p>
-        <p>Телефон: +7 (123) 456-78-90</p>
+    <!-- Footer (аналогично index.html) -->
+    <footer class="site-footer">
+        <!-- Содержимое футера такое же как в index.html -->
     </footer>
+
+    <!-- Theme Toggle Button -->
+    <button class="theme-toggle" type="button" aria-pressed="false" aria-label="Переключить тему">
+        <span class="theme-toggle__icon">🌙</span>
+    </button>
+
+    <script src="main.js"></script>
 </body>
 </html>
