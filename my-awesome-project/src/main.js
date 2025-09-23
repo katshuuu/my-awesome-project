@@ -28,7 +28,7 @@ class ThemeManager {
       this.toggleTheme();
     });
     
-    // Слушаем изменения системной темы
+    //  изменения системной темы
     window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
       if (!localStorage.getItem(this.KEY)) {
         if (e.matches) {
